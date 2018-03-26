@@ -13,6 +13,9 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  // alias: {
+  //   '@': resolve('src')
+  // },
   routes: [
     {
       path: '/',
@@ -33,6 +36,11 @@ export default new Router({
       path: '/nofound',
       name: 'notFound',
       component: resolve => require(['@/views/NotFound'], resolve)
+    },
+    {
+      path: '/nofound',
+      name: 'notFound',
+      component: () => import('@/components/Other')
     }
   ]
 })
