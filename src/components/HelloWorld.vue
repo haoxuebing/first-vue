@@ -1,11 +1,19 @@
 <template>
   <div class='hello'>
-    <h1>{{ msg }}</h1>
+    <h1>{{ message }}</h1>
+    <button v-on:click="reverseMessage">逆转消息</button>
+    <button @click="reverseMessage">逆转消息</button>
     <h2>Essential Links</h2>
+    <p v-if="seen">现在你看到我了</p>
     <ul>
-      <li><a href="/About" target="_blank">About</a></li>
-      <li><input type="button" @click="aa()" value="button"></li>
-       
+      <li>
+        <a href="/About">About</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" @click="aa">Other</a>
+      </li>
+      <li v-for="todo in todos">{{ todo.text }}</li>
+
     </ul>
   </div>
 </template>
@@ -15,12 +23,21 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      seen: false,
+      message: 'Welcome to Your Vue.js App',
+      todos: [
+        { text: '学习 JavaScript' },
+        { text: '学习 Vue' },
+        { text: '整个牛项目' }
+      ]
     }
   },
   methods: {
     aa () {
       this.$router.push({ name: 'Other' })
+    },
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
     }
   }
 }
