@@ -6,6 +6,7 @@
     <h2>Essential Links</h2>
     <p v-if="seen">现在你看到我了</p>
     <P>{{now}}</P>
+    <router-link to="Other">Other链接</router-link>
     <ul>
       <li>
         <a href="/About">About</a>
@@ -47,7 +48,8 @@ export default {
   },
   methods: {
     aa () {
-      this.$router.push({ name: 'Other' })
+      //this.$router.push({ name: 'Other' })
+      this.$router.replace ('Other')
     },
     reverseMessage: function () {
       this.message = this.message.split('').reverse().join('')
