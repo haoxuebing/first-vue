@@ -5,6 +5,7 @@
     <button @click="reverseMessage">逆转消息</button>
     <h2>Essential Links</h2>
     <p v-if="seen">现在你看到我了</p>
+    <P>{{now}}</P>
     <ul>
       <li>
         <a href="/About">About</a>
@@ -12,24 +13,36 @@
       <li>
         <a href="javascript:void(0)" @click="aa">Other</a>
       </li>
-      <li v-for="todo in todos">{{ todo.text }}</li>
-
     </ul>
+    <li v-for="todo in todos">{{ todo.text }}</li>
+    <div v-if="type === 'A'">
+      A
+    </div>
+    <div v-else-if="type === 'B'">
+      B
+    </div>
+    <div v-else-if="type === 'C'">
+      C
+    </div>
+    <div v-else>
+      Not A/B/C
+    </div>
+    <h1 v-show="true">Hello!</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  data () {
-    return {
-      seen: false,
-      message: 'Welcome to Your Vue.js App',
-      todos: [
-        { text: '学习 JavaScript' },
-        { text: '学习 Vue' },
-        { text: '整个牛项目' }
-      ]
+  data:function() {
+      return{ 
+        seen: false,
+        message: 'Welcome to Your Vue.js App',
+        todos: [
+          { text: '学习 JavaScript' },
+          { text: '学习 Vue' },
+          { text: '整个牛项目' }
+        ]
     }
   },
   methods: {
@@ -38,6 +51,11 @@ export default {
     },
     reverseMessage: function () {
       this.message = this.message.split('').reverse().join('')
+    }
+  },
+  computed: {
+    now: function () {
+      return 'now time'
     }
   }
 }

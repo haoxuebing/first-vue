@@ -2,12 +2,14 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <h2>{{message}}</h2>
   </div>
 </template>
 
 <script>
 export default {
   name: 'About',
+  props: ['message'],
   data () {
     return {
       msg: 'Welcome to About'
