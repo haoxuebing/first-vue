@@ -11,7 +11,7 @@ Vue.use(Router)
 //   template: '<li>这是个待办项</li>'
 // })
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   // alias: {
   //   '@': resolve('src')
@@ -44,3 +44,9 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log('haha');
+  next();
+})
+export default router;
