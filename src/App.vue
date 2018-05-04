@@ -1,12 +1,18 @@
 <template>
   <div id="app"> <!-- <img src="./assets/logo.png"> -->
+ 
     <router-view/>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import Mint from 'mint-ui';
+
+Vue.use(Mint);
 export default {
-  name: 'app'
+  name: 'app',
+  components:{Mint}
 }
 </script>
 

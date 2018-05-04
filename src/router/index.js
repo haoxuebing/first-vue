@@ -3,13 +3,16 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import About from '@/components/About'
 import Other from '@/components/Other'
+import Mint from 'mint-ui';
+
+Vue.use(Mint)
 
 Vue.use(Router)
 
 // 定义名为 todo-item 的新组件
-// Vue.component('todo-item', {
-//   template: '<li>这是个待办项</li>'
-// })
+Vue.component('todo-item', {
+  template: '<li>这是个待办项</li>'
+})
 
 const router = new Router({
   mode: 'history',
@@ -41,6 +44,16 @@ const router = new Router({
       path: '/nofound',
       name: 'notFound',
       component: () => import('@/components/Other')
+    },
+    {
+      path: '/vue',
+      name: 'vue',
+      component: Mint
+    },
+    {
+      path:'/getdata',
+      name:'GetData',
+      component:()=>import('@/components/GetData')
     }
   ]
 })

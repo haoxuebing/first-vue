@@ -12,22 +12,12 @@
         <a href="/About">About</a>
       </li>
       <li>
-        <a href="javascript:void(0)" @click="aa">Other</a>
+        <a href="javascript:void(0)" @click="aa('Other')">Other</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" @click="aa('GetData')">GetData</a>
       </li>
     </ul>
-    <li v-for="todo in todos">{{ todo.text }}</li>
-    <div v-if="type === 'A'">
-      A
-    </div>
-    <div v-else-if="type === 'B'">
-      B
-    </div>
-    <div v-else-if="type === 'C'">
-      C
-    </div>
-    <div v-else>
-      Not A/B/C
-    </div>
     <h1 v-show="true">Hello!</h1>
   </div>
 </template>
@@ -47,9 +37,9 @@ export default {
     }
   },
   methods: {
-    aa () {
+    aa (name) {
       //this.$router.push({ name: 'Other' })
-      this.$router.replace ('Other')
+      this.$router.replace (name)
     },
     reverseMessage: function () {
       this.message = this.message.split('').reverse().join('')
