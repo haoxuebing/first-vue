@@ -6,28 +6,29 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        count: 1
+        count: 1,
+        getStr: '123'
     },
     mutations: {
         increment(state) {
             state.count++
+        },
+        setStr(state, str) {
+            state.getStr = str;
         }
     },
     actions: {
-        GetHelloWorld(state, commit, dispatch) {
+        GetHelloWorld({state, commit, dispatch}) {
             return new Promise(function (resolve, reject) {
                 // 异步取数据
-                axios.get(getUserInfoHost, {
-                  withCredentials: true
-                }).then(res => {
-                  const data = res.data;
-                  commit(increment, data);
-                  resolve();
+                axios.get('http://localhost:3000/test/api_test').then(res => {
+                    const data = res.data;
+                    commit('setStr', data);
+                    resolve();
                 }).catch(err => {
-                  console.log(err)
+                    console.log(err)
                 })
-                
-              })
+            })
         }
     }
 })
